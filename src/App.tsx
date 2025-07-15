@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import DifficultySelector from "./components/difficulty/DifficultySelector";
+import type { GameSession, GameStatus } from "./types/api";
+import GameBoard from "./components/board/GameBoard";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [session, setSession] = useState<GameSession | null>(null);
+  const [gameStatus, setGameStatus] = useState<GameStatus>("playing" as const);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const handleGameEnd = (won: boolean, attempts: number) => {
+    setGameStatus(won ? "won" : "lost");
+  };
+
+  const handleError = (error: string) => {
+    setErrorMessage(error);
+    setTimeout(() => setErrorMessage(""), 3000);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="header">
+      <h1>Wordle</h1>
+
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+
+      {!session ? (
+        <DifficultySelector onStart={setSession} />
+      ) : (
+        <>
+          <span className="difficulty">
+            Dificultad: {session.difficulty.name}
+          </span>
+
+          <GameBoard
+            wordLength={session.wordLength}
+            sessionId={session.sessionId}
+            onGameEnd={handleGameEnd}
+          />
+        </>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

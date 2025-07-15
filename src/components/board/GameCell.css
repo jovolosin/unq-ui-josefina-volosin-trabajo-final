@@ -1,0 +1,55 @@
+.game-cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: var(--cell-border-width) solid var(--cell-border-color);
+  font-size: var(--cell-font-size);
+  transition: all var(--transition-duration) ease-in-out;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.game-cell--correct {
+  color: white;
+  background-color: var(--color-correct);
+  border-color: var(--color-correct);
+}
+
+.game-cell--elsewhere {
+  color: white;
+  background-color: var(--color-elsewhere);
+  border-color: var(--color-elsewhere);
+}
+
+.game-cell--absent {
+  color: white;
+  background-color: var(--color-absent);
+  border-color: var(--color-absent);
+}
+
+.game-cell--active {
+  animation: pulse var(--transition-duration) ease-in-out;
+  border-color: var(--color-active-border);
+}
+
+.game-cell:hover {
+  transform: scale(1.02);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

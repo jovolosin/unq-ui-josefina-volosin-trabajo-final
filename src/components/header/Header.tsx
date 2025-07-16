@@ -1,17 +1,35 @@
-import { FiHelpCircle } from "react-icons/fi";
+import { FiArrowLeft, FiHelpCircle } from "react-icons/fi";
 import "./Header.css";
+import DifficultyBar from "./DifficultyBar";
+import type { Difficulty } from "../../types/api";
 
 interface Props {
-  difficulty?: string;
+  difficulty?: Difficulty;
+  allDifficulties: Difficulty[];
   onHelpClick: () => void;
+  onBack: () => void;
 }
-
-const Header = ({ difficulty, onHelpClick }: Props) => {
+const Header = ({
+  difficulty,
+  allDifficulties,
+  onHelpClick,
+  onBack,
+}: Props) => {
   return (
     <header className="app-header">
       <div className="header-side left">
+        <button
+          className="btn"
+          onClick={onBack}
+          title="Volver a seleccionar dificultad"
+        >
+          <FiArrowLeft size={24} />
+        </button>
         {difficulty && (
-          <span className="difficulty-pill">Dificultad: {difficulty}</span>
+          <DifficultyBar
+            difficulties={allDifficulties}
+            selected={difficulty.id}
+          />
         )}
       </div>
 
@@ -20,7 +38,7 @@ const Header = ({ difficulty, onHelpClick }: Props) => {
       </div>
 
       <div className="header-side right">
-        <button className="help-btn" onClick={onHelpClick} title="Cómo jugar">
+        <button className="btn" onClick={onHelpClick} title="Cómo jugar">
           <FiHelpCircle size={24} />
         </button>
       </div>

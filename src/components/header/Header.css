@@ -1,14 +1,15 @@
 .app-header {
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 24px;
-  background-color: white;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
+  padding: 0 20px;
   z-index: 10;
 }
 
@@ -20,6 +21,7 @@
 
 .left {
   justify-content: flex-start;
+  gap: 4px;
 }
 
 .right {
@@ -38,25 +40,18 @@
   color: var(--color-title-1);
 }
 
-.difficulty-pill {
-  background-color: var(--color-title-2);
-  color: white;
-  padding: 4px 10px;
-  font-size: 0.85rem;
-  border-radius: 999px;
-  font-weight: 500;
-  text-transform: capitalize;
-}
-
-.help-btn {
-  background: none;
+.btn {
+  background: transparent;
   border: none;
-  color: var(--color-title-2);
+  color: var(--wordle);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  margin-right: 8px;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
-.help-btn:hover {
-  transform: scale(1.2);
-  color: #005f56;
+.btn:hover {
+  background-color: var(--wordle);
+  color: white;
 }

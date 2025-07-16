@@ -1,18 +1,17 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Estructura */
+  min-height: 100%;
+  font-family: "Inter", sans-serif;
+
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  background-color: #f4f4f9;
-  color: #333;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Game cell config */
+  /* Game cell */
   --cell-size: 48px;
   --cell-gap: 8px;
   --cell-border-width: 2px;
@@ -28,10 +27,25 @@
   --color-error: #ff6b6b;
 
   /* Títulos */
-  --color-title-1: #3c006b;
-  --color-title-2: #00796b;
+  --color-title-1: var(--dark);
+  --color-title-2: var(--dark);
+  --wordle: #5a9a54;
+  --dark: #223920;
 
   /* Extras visuales */
-  --accent-color: #8b5cf6;
+  --accent-color: white;
   --transition-duration: 0.2s;
+
+  --key: rgba(200, 200, 200, 0.85);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: linear-gradient(135deg, #e0f2f1 0%, #c8eab5 50%, #a1d79d 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }

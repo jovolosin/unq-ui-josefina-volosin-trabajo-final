@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import type { GameSession, GameStatus } from "./types/api";
+import type { Difficulty, GameSession, GameStatus } from "./types/api";
 import DifficultySelector from "./components/difficulty/DifficultySelector";
 import GameBoard from "./components/board/GameBoard";
 import HowToPlayModal from "./components/modal/HowToPlayModal";
 import Header from "./components/header/Header";
 import { helpModalService } from "./services/helpModalService";
+import { fetchDifficulties } from "./services/api";
+import { GameResultModal } from "./components/modal/GameResultModal";
 
 function App() {
   const [session, setSession] = useState<GameSession | null>(null);
@@ -14,6 +16,15 @@ function App() {
   const [showHelp, setShowHelp] = useState(
     () => !helpModalService.hasSeenHelp()
   );
+  const [difficulties, setDifficulties] = useState<Difficulty[]>([]);
+  const [loadingDiffs, setLoadingDiffs] = useState(true);
+
+  useEffect(() => {
+    fetchDifficulties()
+      .then(setDifficulties)
+      .catch(() => setErrorMessage("No se pudieron cargar las dificultades."))
+      .finally(() => setLoadingDiffs(false));
+  }, []);
 
   useEffect(() => {
     if (!showHelp) {
@@ -35,11 +46,15 @@ function App() {
     setGameStatus("playing");
   };
 
+  if (loadingDiffs) return <p className="loading">Cargando...</p>;
+
   return (
     <div className="app-container">
       <Header
-        difficulty={session?.difficulty.name}
+        difficulty={session?.difficulty}
+        allDifficulties={difficulties}
         onHelpClick={() => setShowHelp(true)}
+        onBack={handleRestart}
       />
       {showHelp && <HowToPlayModal onClose={() => setShowHelp(false)} />}
 
@@ -48,7 +63,10 @@ function App() {
       {!session ? (
         <div className="intro-screen">
           <h2>Elegí una dificultad para empezar a jugar</h2>
-          <DifficultySelector onStart={setSession} />
+          <DifficultySelector
+            difficulties={difficulties}
+            onStart={setSession}
+          />
         </div>
       ) : (
         <main className="game-content">
@@ -60,12 +78,10 @@ function App() {
           />
 
           {gameStatus !== "playing" && (
-            <div className="game-result">
-              {gameStatus === "won" ? "¡Ganaste! 🎉" : "Perdiste 😢"}
-              <button className="restart-btn" onClick={handleRestart}>
-                Jugar otra vez
-              </button>
-            </div>
+            <GameResultModal
+              gameStatus={gameStatus}
+              onRestart={handleRestart}
+            />
           )}
         </main>
       )}

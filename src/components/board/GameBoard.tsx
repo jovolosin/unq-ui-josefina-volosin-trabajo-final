@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useKeyboardHandler } from "../../hooks/useKeyboardHandler";
 import { useGameLogic } from "../../hooks/useGameLogic";
 import { GameCell } from "./GameCell";
 import "./GameBoard.css";
+import ScreenKeyboard from "../keyboard/ScreenKeyboard";
+import { getLetterStatuses } from "../../utils/gameUtils";
 
 interface Props {
   wordLength: number;
@@ -28,6 +30,8 @@ const GameBoard = ({
     initializeGame,
   } = useGameLogic(wordLength, maxAttempts, sessionId, onGameEnd, onError);
 
+  const letterStatuses = useMemo(() => getLetterStatuses(attempts), [attempts]);
+
   useKeyboardHandler({
     onAddLetter: addLetter,
     onRemoveLetter: removeLetter,
@@ -38,6 +42,16 @@ const GameBoard = ({
   useEffect(() => {
     initializeGame();
   }, [wordLength, maxAttempts, initializeGame]);
+
+  const handleKeyPress = (key: string) => {
+    if (key === "DEL") {
+      removeLetter();
+    } else if (key === "ENTER") {
+      submitWord();
+    } else {
+      addLetter(key);
+    }
+  };
 
   return (
     <div className="game-board">
@@ -53,6 +67,12 @@ const GameBoard = ({
           ))}
         </div>
       ))}
+
+      <ScreenKeyboard
+        onKeyPress={handleKeyPress}
+        disabled={currentIndex >= maxAttempts}
+        letterStatuses={letterStatuses}
+      />
     </div>
   );
 };

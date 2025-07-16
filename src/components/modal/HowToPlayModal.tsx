@@ -40,7 +40,7 @@ const HowToPlayModal = ({ onClose }: Props) => {
 
         <div className="example-row">
           <div className="example-cell">C</div>
-          <div className="example-cell">A</div>
+          <div className="example-cell">O</div>
           <div className="example-cell">S</div>
           <div className="example-cell absent">T</div>
           <div className="example-cell">A</div>

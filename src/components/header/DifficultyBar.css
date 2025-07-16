@@ -1,0 +1,23 @@
+.difficulty-bar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.difficulty-block {
+  width: 18px;
+  height: 18px;
+  background-color: #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.difficulty-block.active {
+  background-color: var(--wordle);
+}
+
+.label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-title-2);
+}

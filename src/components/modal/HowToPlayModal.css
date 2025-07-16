@@ -1,0 +1,73 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 24px 32px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.example-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.example-cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--cell-font-size);
+  font-weight: bold;
+  border: var(--cell-border-width) solid var(--cell-border-color);
+  background-color: var(--color-empty);
+}
+
+.correct {
+  background-color: var(--color-correct);
+  color: white;
+}
+
+.elsewhere {
+  background-color: var(--color-elsewhere);
+  color: white;
+}
+
+.absent {
+  background-color: var(--color-absent);
+  color: white;
+}
+
+.modal-close-btn {
+  margin-top: 20px;
+  padding: 10px 18px;
+  background-color: var(--color-title-2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color var(--transition-duration);
+}
+
+.modal-close-btn:hover {
+  background-color: #00695c;
+}

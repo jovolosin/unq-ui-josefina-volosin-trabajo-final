@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useKeyboardHandler } from "../../hooks/useKeyboardHandler";
 import { useGameLogic } from "../../hooks/useGameLogic";
 import { GameCell } from "./GameCell";
@@ -8,7 +8,8 @@ interface Props {
   wordLength: number;
   maxAttempts?: number;
   sessionId: string;
-  onGameEnd?: (won: boolean, attempts: number) => void;
+  onGameEnd?: (won: boolean) => void;
+  onError?: (error: string) => void;
 }
 
 const GameBoard = ({
@@ -16,15 +17,8 @@ const GameBoard = ({
   maxAttempts = 6,
   sessionId,
   onGameEnd,
+  onError,
 }: Props) => {
-  const [error, setError] = useState<string | null>(null);
-
-  const handleError = (message: string) => {
-    setError(message);
-    // Borra el mensaje después de 3 segundos
-    setTimeout(() => setError(null), 3000);
-  };
-
   const {
     attempts,
     currentIndex,
@@ -32,7 +26,7 @@ const GameBoard = ({
     removeLetter,
     submitWord,
     initializeGame,
-  } = useGameLogic(wordLength, maxAttempts, sessionId, onGameEnd, handleError);
+  } = useGameLogic(wordLength, maxAttempts, sessionId, onGameEnd, onError);
 
   useKeyboardHandler({
     onAddLetter: addLetter,
@@ -47,8 +41,6 @@ const GameBoard = ({
 
   return (
     <div className="game-board">
-      {error && <div className="error-message">{error}</div>}
-
       {attempts.map((attempt, rowIndex) => (
         <div key={rowIndex} className="game-row">
           {attempt.letters.map((cell, colIndex) => (

@@ -44,7 +44,6 @@ const DifficultySelector = ({ onStart }: Props) => {
 
   return (
     <div>
-      <h2>Seleccioná una dificultad</h2>
       <ul>
         {difficulties.map((d) => (
           <li key={d.id}>

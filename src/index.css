@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  background-color: #fafafa;
+  background-color: #f4f4f9;
   color: #333;
 
   font-synthesis: none;
@@ -12,20 +12,26 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  /* Game cell config */
   --cell-size: 48px;
   --cell-gap: 8px;
   --cell-border-width: 2px;
   --cell-border-color: #888;
   --cell-font-size: 1.5rem;
+
   --color-correct: #6aaa64;
   --color-elsewhere: #c9b458;
   --color-absent: #787c7e;
   --color-empty: white;
   --color-active-border: #565758;
+
   --color-error: #ff6b6b;
 
-  --color-title-1: #333;
+  /* Títulos */
+  --color-title-1: #3c006b;
   --color-title-2: #00796b;
 
+  /* Extras visuales */
+  --accent-color: #8b5cf6;
   --transition-duration: 0.2s;
 }

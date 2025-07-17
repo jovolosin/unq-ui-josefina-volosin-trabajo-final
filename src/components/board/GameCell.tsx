@@ -1,17 +1,13 @@
 import { type LetterResult } from "../../types/Attempt";
 import "./GameCell.css";
 
-interface GameCellProps {
+interface Props {
   letter: string;
   status: LetterResult["status"];
   isActive?: boolean;
 }
 
-export const GameCell = ({
-  letter,
-  status,
-  isActive = false,
-}: GameCellProps) => {
+export const GameCell = ({ letter, status, isActive = false }: Props) => {
   const cellClasses = [
     "game-cell",
     `game-cell--${status}`,

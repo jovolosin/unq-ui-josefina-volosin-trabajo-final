@@ -1,13 +1,10 @@
 import "./GameResultModal.css";
-interface GameResultModalProps {
+interface Props {
   gameStatus: "won" | "lost";
   onRestart: () => void;
 }
 
-export const GameResultModal = ({
-  gameStatus,
-  onRestart,
-}: GameResultModalProps) => {
+export const GameResultModal = ({ gameStatus, onRestart }: Props) => {
   const message = gameStatus === "won" ? "¡Ganaste! 🎉" : "Perdiste 😢";
   const subtitle =
     gameStatus === "won"

@@ -1,12 +1,12 @@
 import type { Difficulty } from "../../types/api";
 import "./DifficultyBar.css";
 
-interface DifficultyBarProps {
+interface Props {
   difficulties: Difficulty[];
   selected: string;
 }
 
-const DifficultyBar = ({ difficulties, selected }: DifficultyBarProps) => {
+const DifficultyBar = ({ difficulties, selected }: Props) => {
   return (
     <div className="difficulty-bar">
       <span className="label">Dificultad</span>

@@ -2,11 +2,11 @@
 
 # Wordle
 
-Una implementación del juego Wordle desarrollado con React, TypeScript y Vite.
+Implementación del juego Wordle desarrollado con React, TypeScript y Vite.
 
 ## Descripción
 
-Este es un juego de palabras donde el jugador debe adivinar una palabra de con una cantidad de letras en máximo 6 intentos. Después de cada intento, el juego proporciona pistas visuales sobre qué letras están en la palabra correcta y en qué posición.
+Este es un juego de palabras donde el jugador debe adivinar una palabra con X cantidad de letras en máximo 6 intentos. Después de cada intento, el juego proporciona pistas visuales sobre qué letras están en la palabra correcta y en qué posición.
 
 ## Tecnologías utilizadas
 
@@ -17,25 +17,18 @@ Este es un juego de palabras donde el jugador debe adivinar una palabra de con u
 
 ## Requisitos previos
 
-Antes de comenzar, asegurate de tener instalado en tu sistema:
+Antes de comenzar, se necesita tener instalado:
 
 - [Node.js](https://nodejs.org/) (versión 16 o superior)
 - [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/)
-
-Puedes verificar si tienes Node.js y npm instalados ejecutando:
-
-```bash
-node --version
-npm --version
-```
 
 ## Instalación
 
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/
-cd
+git clone https://github.com/jovolosin/unq-ui-josefina-volosin-trabajo-final
+cd unq-ui-josefina-volosin-trabajo-final
 ```
 
 ### 2. Instalar dependencias

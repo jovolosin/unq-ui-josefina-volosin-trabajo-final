@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const GameResultModal = ({ gameStatus, onRestart }: Props) => {
-  const message = gameStatus === "won" ? "¡Ganaste! 🎉" : "Perdiste 😢";
+  const message = gameStatus === "won" ? "¡Ganaste!" : "Perdiste";
   const subtitle =
     gameStatus === "won"
       ? "¡Excelente trabajo!"

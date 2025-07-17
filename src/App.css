@@ -23,38 +23,20 @@
   text-shadow: 0 2px 4px rgba(140, 100, 200, 0.2);
 }
 
-.how-to-play-btn {
-  position: absolute;
-  right: 0;
-  top: 10px;
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: transform var(--transition-duration);
-}
-
-.how-to-play-btn:hover {
-  background-color: #7c3aed;
-  transform: scale(1.1);
+.intro-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
 }
 
 .intro-screen h2 {
-  font-weight: 500;
+  font-weight: bold;
   font-size: 1.2rem;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 12px;
   color: var(--color-title-2);
-}
-
-.game-result {
-  margin-top: 24px;
-  font-size: 1.5rem;
-  color: var(--color-title-1);
 }
 
 .restart-btn {

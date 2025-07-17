@@ -7,13 +7,17 @@ interface Props {
 }
 
 const DifficultyBar = ({ difficulties, selected }: Props) => {
+  const selectedIndex = difficulties.findIndex((d) => d.id === selected);
+
   return (
     <div className="difficulty-bar">
       <span className="label">Dificultad</span>
-      {difficulties.map((d) => (
+      {difficulties.map((d, index) => (
         <div
           key={d.id}
-          className={`difficulty-block ${d.id === selected ? "active" : ""}`}
+          className={`difficulty-block ${
+            index <= selectedIndex ? "active" : ""
+          }`}
           title={d.name}
         ></div>
       ))}

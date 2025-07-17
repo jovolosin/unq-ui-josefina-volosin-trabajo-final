@@ -18,13 +18,15 @@ const Header = ({
   return (
     <header className="app-header">
       <div className="header-side left">
-        <button
-          className="btn"
-          onClick={onBack}
-          title="Volver a seleccionar dificultad"
-        >
-          <FiArrowLeft size={24} />
-        </button>
+        {difficulty && (
+          <button
+            className="btn"
+            onClick={onBack}
+            title="Volver a seleccionar dificultad"
+          >
+            <FiArrowLeft size={24} />
+          </button>
+        )}
         {difficulty && (
           <DifficultyBar
             difficulties={allDifficulties}
